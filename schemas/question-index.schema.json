@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LexExamBench metadata-only public question index v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "questions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "exam_system",
+          "year",
+          "paper",
+          "question_number",
+          "question_type",
+          "subject",
+          "source_url",
+          "answer_source_url",
+          "provenance_grade",
+          "rights",
+          "law_time_status",
+          "expert_review",
+          "split"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "exam_system": {
+            "enum": [
+              "national-judicial-exam",
+              "national-legal-qualification-exam"
+            ]
+          },
+          "year": {
+            "type": "integer",
+            "minimum": 1986,
+            "maximum": 2100
+          },
+          "paper": {
+            "type": "string",
+            "minLength": 1
+          },
+          "question_number": {
+            "type": "string",
+            "minLength": 1
+          },
+          "question_type": {
+            "enum": [
+              "single-choice",
+              "multiple-choice",
+              "indefinite-choice",
+              "case-analysis",
+              "essay"
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_url": {
+            "type": "string",
+            "pattern": "^https://[^ ]+$"
+          },
+          "answer_source_url": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "pattern": "^https://[^ ]+$"
+              }
+            ]
+          },
+          "provenance_grade": {
+            "enum": [
+              "official-exam",
+              "official-sample",
+              "academic-dataset",
+              "training-reconstruction",
+              "synthetic"
+            ]
+          },
+          "rights": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "question_copy",
+              "answer_copy",
+              "storage",
+              "redistribution",
+              "external_model"
+            ],
+            "properties": {
+              "question_copy": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "evidence_url"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "verified",
+                      "denied",
+                      "not-applicable"
+                    ]
+                  },
+                  "evidence_url": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^https://[^ ]+$"
+                      }
+                    ]
+                  }
+                }
+              },
+              "answer_copy": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "evidence_url"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "verified",
+                      "denied",
+                      "not-applicable"
+                    ]
+                  },
+                  "evidence_url": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^https://[^ ]+$"
+                      }
+                    ]
+                  }
+                }
+              },
+              "storage": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "evidence_url"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "verified",
+                      "denied",
+                      "not-applicable"
+                    ]
+                  },
+                  "evidence_url": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^https://[^ ]+$"
+                      }
+                    ]
+                  }
+                }
+              },
+              "redistribution": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "evidence_url"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "verified",
+                      "denied",
+                      "not-applicable"
+                    ]
+                  },
+                  "evidence_url": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^https://[^ ]+$"
+                      }
+                    ]
+                  }
+                }
+              },
+              "external_model": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "evidence_url"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "pending",
+                      "verified",
+                      "denied",
+                      "not-applicable"
+                    ]
+                  },
+                  "evidence_url": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string",
+                        "pattern": "^https://[^ ]+$"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "law_time_status": {
+            "enum": [
+              "unknown",
+              "historical-review-pending",
+              "historical-reviewed",
+              "current-reviewed"
+            ]
+          },
+          "expert_review": {
+            "enum": [
+              "pending",
+              "approved",
+              "rejected"
+            ]
+          },
+          "split": {
+            "enum": [
+              "unassigned",
+              "public-index"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
