@@ -9,3 +9,8 @@ __pycache__/
 private/
 holdout/
 *.secret.json
+work/
+*.pdf
+*.zip
+*.jsonl
+*.parquet

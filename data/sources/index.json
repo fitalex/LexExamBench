@@ -1,4 +1,235 @@
 {
-  "schema_version": "0.1.0",
-  "sources": []
+  "schema_version": "0.2.0",
+  "sources": [
+    {
+      "id": "moj-2017-paper1",
+      "url": "https://www.moj.gov.cn/pub/sfbgw/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201805/t20180510_172369.html",
+      "publisher": "Ministry of Justice",
+      "exam_system": "national-judicial-exam",
+      "year": 2017,
+      "question_type": "objective paper; locators unverified",
+      "answer_source_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201709/t20170921_172374.html",
+      "provenance_grade": "official",
+      "accessed_at": "2026-10-27",
+      "verification": "unverified",
+      "access_result": "HTTP 302 redirect loop; no body or locator verified",
+      "revision": "unresolved",
+      "indexing": {
+        "status": "pending",
+        "evidence_url": "https://www.moj.gov.cn/pub/sfbgw/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201805/t20180510_172369.html",
+        "basis": "Source-level URL recorded; individual question locators not yet verified"
+      },
+      "rights": {
+        "question_copy": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/pub/sfbgw/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201805/t20180510_172369.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "answer_copy": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/pub/sfbgw/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201805/t20180510_172369.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "storage": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/pub/sfbgw/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201805/t20180510_172369.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "redistribution": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/pub/sfbgw/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201805/t20180510_172369.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "external_model": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/pub/sfbgw/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201805/t20180510_172369.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        }
+      }
+    },
+    {
+      "id": "moj-2017-answer1",
+      "url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201709/t20170921_172374.html",
+      "publisher": "Ministry of Justice",
+      "exam_system": "national-judicial-exam",
+      "year": 2017,
+      "question_type": "answer key; unverified",
+      "answer_source_url": null,
+      "provenance_grade": "official",
+      "accessed_at": "2026-10-27",
+      "verification": "unverified",
+      "access_result": "HTTP 302 redirect loop; no body or locator verified",
+      "revision": "unresolved",
+      "indexing": {
+        "status": "pending",
+        "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201709/t20170921_172374.html",
+        "basis": "Source-level URL recorded; individual question locators not yet verified"
+      },
+      "rights": {
+        "question_copy": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201709/t20170921_172374.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "answer_copy": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201709/t20170921_172374.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "storage": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201709/t20170921_172374.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "redistribution": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201709/t20170921_172374.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "external_model": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkskskt/201709/t20170921_172374.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        }
+      }
+    },
+    {
+      "id": "moj-2026-notice",
+      "url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkszxdt/202606/t20260611_536377.html",
+      "publisher": "Ministry of Justice",
+      "exam_system": "national-legal-qualification-exam",
+      "year": 2026,
+      "question_type": "notice; no question locator",
+      "answer_source_url": null,
+      "provenance_grade": "official",
+      "accessed_at": "2026-10-27",
+      "verification": "unverified",
+      "access_result": "HTTP 302 redirect loop; no body or locator verified",
+      "revision": "unresolved",
+      "indexing": {
+        "status": "pending",
+        "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkszxdt/202606/t20260611_536377.html",
+        "basis": "Source-level URL recorded; individual question locators not yet verified"
+      },
+      "rights": {
+        "question_copy": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkszxdt/202606/t20260611_536377.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "answer_copy": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkszxdt/202606/t20260611_536377.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "storage": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkszxdt/202606/t20260611_536377.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "redistribution": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkszxdt/202606/t20260611_536377.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "external_model": {
+          "status": "pending",
+          "evidence_url": "https://www.moj.gov.cn/jgsz/jgszzsdw/zsdwgjsfkszx/gjsfkszxdt/202606/t20260611_536377.html",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        }
+      }
+    },
+    {
+      "id": "jec-qa",
+      "url": "https://github.com/thunlp/jec-qa",
+      "publisher": "THUNLP",
+      "exam_system": "mixed-unverified",
+      "year": null,
+      "question_type": "academic collection; no individual locator verified",
+      "answer_source_url": null,
+      "provenance_grade": "third-party",
+      "accessed_at": "2026-10-27",
+      "verification": "accessed-metadata-only",
+      "access_result": "README 200; root LICENSE 404; root listing has no license file",
+      "revision": "8706c64ff62637e61cd8a729815f585a6df3b3f1",
+      "indexing": {
+        "status": "pending",
+        "evidence_url": "https://github.com/thunlp/jec-qa",
+        "basis": "Source-level URL recorded; individual question locators not yet verified"
+      },
+      "rights": {
+        "question_copy": {
+          "status": "pending",
+          "evidence_url": "https://github.com/thunlp/jec-qa",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "answer_copy": {
+          "status": "pending",
+          "evidence_url": "https://github.com/thunlp/jec-qa",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "storage": {
+          "status": "pending",
+          "evidence_url": "https://github.com/thunlp/jec-qa",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "redistribution": {
+          "status": "pending",
+          "evidence_url": "https://github.com/thunlp/jec-qa",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "external_model": {
+          "status": "pending",
+          "evidence_url": "https://github.com/thunlp/jec-qa",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        }
+      }
+    },
+    {
+      "id": "recalled-candidate",
+      "url": "https://github.com/fitalex/LexRouter/issues/16",
+      "publisher": "Unselected training publishers",
+      "exam_system": "national-legal-qualification-exam",
+      "year": null,
+      "question_type": "candidate class only; not an actual question source",
+      "answer_source_url": null,
+      "provenance_grade": "recalled",
+      "accessed_at": "2026-10-27",
+      "verification": "unverified",
+      "access_result": "candidate class from task; no provider selected",
+      "revision": "unresolved",
+      "indexing": {
+        "status": "pending",
+        "evidence_url": "https://github.com/fitalex/LexRouter/issues/16",
+        "basis": "Source-level URL recorded; individual question locators not yet verified"
+      },
+      "rights": {
+        "question_copy": {
+          "status": "pending",
+          "evidence_url": "https://github.com/fitalex/LexRouter/issues/16",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "answer_copy": {
+          "status": "pending",
+          "evidence_url": "https://github.com/fitalex/LexRouter/issues/16",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "storage": {
+          "status": "pending",
+          "evidence_url": "https://github.com/fitalex/LexRouter/issues/16",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "redistribution": {
+          "status": "pending",
+          "evidence_url": "https://github.com/fitalex/LexRouter/issues/16",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        },
+        "external_model": {
+          "status": "pending",
+          "evidence_url": "https://github.com/fitalex/LexRouter/issues/16",
+          "basis": "No reviewed use-specific grant; access does not confer permission"
+        }
+      }
+    }
+  ]
 }

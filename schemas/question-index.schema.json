@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "LexExamBench metadata-only public question index v0.1",
+  "title": "LexExamBench metadata-only index v0.2",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -9,7 +9,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "0.1.0"
+      "const": "0.2.0"
     },
     "questions": {
       "type": "array",
@@ -30,7 +30,15 @@
           "rights",
           "law_time_status",
           "expert_review",
-          "split"
+          "split",
+          "accessed_at",
+          "source_id",
+          "business_category_mapping",
+          "law_time_context",
+          "current_law_review",
+          "public_holdout_candidate",
+          "revision",
+          "provenance"
         ],
         "properties": {
           "id": {
@@ -86,10 +94,9 @@
           },
           "provenance_grade": {
             "enum": [
-              "official-exam",
-              "official-sample",
-              "academic-dataset",
-              "training-reconstruction",
+              "official",
+              "third-party",
+              "recalled",
               "synthetic"
             ]
           },
@@ -109,7 +116,8 @@
                 "additionalProperties": false,
                 "required": [
                   "status",
-                  "evidence_url"
+                  "evidence_url",
+                  "basis"
                 ],
                 "properties": {
                   "status": {
@@ -130,6 +138,11 @@
                         "pattern": "^https://[^ ]+$"
                       }
                     ]
+                  },
+                  "basis": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
                   }
                 }
               },
@@ -138,7 +151,8 @@
                 "additionalProperties": false,
                 "required": [
                   "status",
-                  "evidence_url"
+                  "evidence_url",
+                  "basis"
                 ],
                 "properties": {
                   "status": {
@@ -159,6 +173,11 @@
                         "pattern": "^https://[^ ]+$"
                       }
                     ]
+                  },
+                  "basis": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
                   }
                 }
               },
@@ -167,7 +186,8 @@
                 "additionalProperties": false,
                 "required": [
                   "status",
-                  "evidence_url"
+                  "evidence_url",
+                  "basis"
                 ],
                 "properties": {
                   "status": {
@@ -188,6 +208,11 @@
                         "pattern": "^https://[^ ]+$"
                       }
                     ]
+                  },
+                  "basis": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
                   }
                 }
               },
@@ -196,7 +221,8 @@
                 "additionalProperties": false,
                 "required": [
                   "status",
-                  "evidence_url"
+                  "evidence_url",
+                  "basis"
                 ],
                 "properties": {
                   "status": {
@@ -217,6 +243,11 @@
                         "pattern": "^https://[^ ]+$"
                       }
                     ]
+                  },
+                  "basis": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
                   }
                 }
               },
@@ -225,7 +256,8 @@
                 "additionalProperties": false,
                 "required": [
                   "status",
-                  "evidence_url"
+                  "evidence_url",
+                  "basis"
                 ],
                 "properties": {
                   "status": {
@@ -246,31 +278,82 @@
                         "pattern": "^https://[^ ]+$"
                       }
                     ]
+                  },
+                  "basis": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
                   }
                 }
               }
             }
           },
           "law_time_status": {
-            "enum": [
-              "unknown",
-              "historical-review-pending",
-              "historical-reviewed",
-              "current-reviewed"
-            ]
+            "const": "historical-review-pending"
           },
           "expert_review": {
-            "enum": [
-              "pending",
-              "approved",
-              "rejected"
-            ]
+            "const": "pending"
           },
           "split": {
-            "enum": [
-              "unassigned",
-              "public-index"
-            ]
+            "const": "unassigned"
+          },
+          "accessed_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "source_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "business_category_mapping": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "const": "no-direct-mapping"
+            }
+          },
+          "law_time_context": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "current_law_review": {
+            "const": "pending"
+          },
+          "public_holdout_candidate": {
+            "const": "unassigned"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "provenance": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "method",
+              "locator",
+              "revision"
+            ],
+            "properties": {
+              "method": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              }
+            }
           }
         }
       }
