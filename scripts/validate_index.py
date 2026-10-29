@@ -1,6 +1,7 @@
 """Offline metadata validation. Error messages never echo untrusted field values."""
 import argparse
 import json
+import subprocess
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
@@ -83,15 +84,39 @@ def validate_sources(registry):
     return errors
 
 def validate_public_tree(root):
-    """Reject forbidden paths and unregistered binary/data files without reading bodies."""
+    """Check disk and Git index paths; never read potentially restricted bodies."""
+    root = Path(root)
     errors = []
+    paths = {}
     for p in root.rglob('*'):
-        if '.git' in p.parts or 'work' in p.parts or '__pycache__' in p.parts: continue
-        if any(part.lower() in ('holdout', 'private', 'secrets') for part in p.relative_to(root).parts):
+        relative = p.relative_to(root)
+        # Only repository metadata is exempt, never checkout ancestors or work/.
+        if relative.parts[0] == '.git':
+            continue
+        paths[relative] = p.is_file() or p.is_symlink()
+
+    if (root / '.git').exists():
+        try:
+            result = subprocess.run(
+                ['git', '-C', str(root), 'ls-files', '--cached', '-z'],
+                check=True, capture_output=True,
+            )
+        except (OSError, subprocess.CalledProcessError):
+            errors.append('cannot inspect Git index paths')
+        else:
+            # Include staged/tracked paths even if absent from the working tree.
+            # NUL separation preserves filenames containing whitespace/newlines.
+            for name in result.stdout.split(b'\0'):
+                if name:
+                    paths[Path(name.decode('utf-8', errors='surrogateescape'))] = True
+
+    for relative, is_file in paths.items():
+        parts = relative.parts
+        if any(part.lower() in ('holdout', 'private', 'secrets') for part in parts):
             errors.append('forbidden private/holdout path')
-        if p.is_file() and p.suffix.lower() in ('.pdf', '.zip', '.jsonl', '.csv', '.parquet'):
+        if is_file and relative.suffix.lower() in ('.pdf', '.zip', '.jsonl', '.csv', '.parquet'):
             errors.append('unapproved content file')
-        if p.is_file() and p.suffix == '.json' and 'data' in p.relative_to(root).parts and p.relative_to(root).as_posix() not in ('data/questions/index.json', 'data/sources/index.json'):
+        if is_file and relative.suffix == '.json' and 'data' in parts and relative.as_posix() not in ('data/questions/index.json', 'data/sources/index.json'):
             errors.append('unregistered public data file')
     return errors
 

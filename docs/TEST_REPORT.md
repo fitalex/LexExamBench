@@ -1,4 +1,4 @@
-# Actual local verification — 2026-10-27
+# Actual local verification — 2026-10-29 (P1 scanner repair)
 
 Base: `4a041eae4d44d12f8c75788c42793995efca6a4c`; branch:
 `codex/leb-01-bootstrap-source-audit`.
@@ -7,6 +7,31 @@ Environment: Python 3.12.14; jsonschema 4.26.0; Linux managed LexExamBench cloud
 Commands below actually ran. The default validator **fails** because 0/30 is
 incomplete. Engineering CI uses the explicitly labeled structure-only diagnostic
 and synthetic regression tests; a green CI does **not** mean Gate 1 accepted.
+
+P1 repair: evaluate repository-relative paths; exempt only root `.git` metadata.
+Scan `work/` and cache paths regardless of ignore rules, and union disk paths with
+`git ls-files --cached -z` so force-added files remain checked after local deletion.
+Git-index read failure rejects validation. No schema/source/data/CI-policy changes.
+
+New regressions use empty synthetic files in ordinary, `<tmp>/work/repo/`, and
+Actions-shaped `home/runner/work/LexExamBench/LexExamBench` checkouts. They cover
+holdout, PDF, unregistered JSON, clean roots, work/cache nesting, forced staging
+and subsequent disk deletion, Git metadata exclusion and index-read failure.
+The old scanner fails the seven applicable new tests with 28 failing subcases;
+the fixed implementation passes all 40 tests. The old-code comparison loads the
+previous committed validator into the new regression module; its helper is scratch
+only, while all regression fixtures/tests are committed.
+
+```text
+$ python work/check_old_scanner.py
+Original implementation loaded from 10dcdcc with new filesystem regressions.
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.031s
+
+FAILED (failures=28)
+exit_code=1
+```
 
 ```text
 $ python scripts/validate_index.py
@@ -23,6 +48,14 @@ exit_code=0
 
 ```text
 $ python -m unittest discover -s tests -v
+test_clean_roots_pass (test_public_tree.PublicTreeRegressionTests.test_clean_roots_pass) ... ok
+test_force_added_ignored_files_checked_even_if_removed_from_worktree (test_public_tree.PublicTreeRegressionTests.test_force_added_ignored_files_checked_even_if_removed_from_worktree) ... ok
+test_git_index_read_failure_rejects (test_public_tree.PublicTreeRegressionTests.test_git_index_read_failure_rejects) ... ok
+test_git_metadata_is_excluded (test_public_tree.PublicTreeRegressionTests.test_git_metadata_is_excluded) ... ok
+test_holdout_under_actions_checkout (test_public_tree.PublicTreeRegressionTests.test_holdout_under_actions_checkout) ... ok
+test_pdf_under_actions_checkout (test_public_tree.PublicTreeRegressionTests.test_pdf_under_actions_checkout) ... ok
+test_unregistered_data_under_actions_checkout (test_public_tree.PublicTreeRegressionTests.test_unregistered_data_under_actions_checkout) ... ok
+test_work_and_cache_do_not_hide_forbidden_files (test_public_tree.PublicTreeRegressionTests.test_work_and_cache_do_not_hide_forbidden_files) ... ok
 test_body_rejected (test_validate_index.IndexValidationTests.test_body_rejected) ... ok
 test_current_law_forged (test_validate_index.IndexValidationTests.test_current_law_forged) ... ok
 test_duplicate_id (test_validate_index.IndexValidationTests.test_duplicate_id) ... ok
@@ -57,7 +90,7 @@ test_unknown_category (test_validate_index.IndexValidationTests.test_unknown_cat
 test_unregistered_public_data (test_validate_index.IndexValidationTests.test_unregistered_public_data) ... ok
 
 ----------------------------------------------------------------------
-Ran 32 tests in 0.013s
+Ran 40 tests in 0.104s
 
 OK
 exit_code=0
