@@ -8,16 +8,17 @@ An independent, versioned **Chinese legal-exam benchmark data project**. LexExam
 
 ```sh
 python -m pip install -r requirements.txt
-python scripts/validate_index.py
+python scripts/validate_index.py  # exits 1 while the pilot is empty
+python scripts/validate_index.py --allow-empty  # structure-only diagnostic
 python -m unittest discover -s tests -v
 ```
 
-The starter index intentionally contains **0 verified question records**. A successful validator run proves only that the metadata structure is valid; it does not establish a populated dataset or legal accuracy.
+The audited index currently contains **0/30 verified question records**; original official sources could not be reverified because of HTTP redirect loops. Gate 1 acceptance is incomplete. A successful validator run proves only that the metadata structure is valid; it does not establish a populated dataset or legal accuracy.
 
 ## Layout
 
-- `data/questions/index.json`: public **metadata-only** question index; initially empty.
-- `data/sources/index.json`: source records; initially empty.
+- `data/questions/index.json`: public **metadata-only** question index; currently empty.
+- `data/sources/index.json`: five audited source/candidate records; none verifies a question locator.
 - `schemas/question-index.schema.json`: public index contract.
 - `scripts/validate_index.py`: offline schema and rights-boundary validation.
 - `tests/`: synthetic-only engineering tests.
@@ -39,4 +40,4 @@ Tracking: [LexRouter LR-P2-01](https://github.com/fitalex/LexRouter/issues/16).
 
 ## Status
 
-LEB-01 minimal bootstrap for Codex Cloud environment setup. The 30-question **index-only source-audit pilot remains pending** and should be implemented in a separate Draft PR.
+LEB-01 Gate 1 engineering and source-audit Draft PR; the 30-question pilot remains blocked (0/30). See [source evidence and rights matrix](docs/SOURCE_AUDIT.md), [method and contract](docs/BENCHMARK_METHOD.md), and [verification report](docs/TEST_REPORT.md). No Gate 2 work is authorized.
